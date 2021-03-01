@@ -122,8 +122,11 @@ class ContactDetails{
 	public static String check = "Y";
 
 	public static void addDetails(){
-
-
+	
+		
+	check = "Y";
+	while((check.equals("Y")) || (check.equals("y"))) {
+	
 	System.out.println("Enter FirstName");
 	String firstName=sc.next();
 	System.out.println("Enter LastName");
@@ -140,54 +143,94 @@ class ContactDetails{
 	int phoneNumber=sc.nextInt();
 	System.out.println("Enter Email");
 	String email=sc.next();
+
+	System.out.println("Want To Add Another Contact ? Yes(y)/No(n)");
+	
+	check=sc.next();
+	
 	list.add( new ContactDetails(firstName, lastName, area, city, state, pincode, phoneNumber, email));
+
 	System.out.println(list);
 	}
 
 	public static String editDetails() {
 
-		String name1;
-		System.out.println("Enter First Name of Details to be Edited: ");
-		name1 = sc.next();
 
-				if (name1.equals(list.get(0).getFirstName())) {
+	String name1;
 
-					System.out.println("Enter FirstName");
-					list.get(0).setFirstName(sc.next());
-					System.out.println("Enter LastName");
-					list.get(0).setLastName(sc.next());
-					System.out.println("Enter Area");
-					list.get(0).setArea(sc.next());
-					System.out.println("Enter CityName");
-					list.get(0).setCity(sc.next());
-					System.out.println("Enter StateName");
-					list.get(0).setState(sc.next());
-					System.out.println("Enter ZipCode");
-					list.get(0).setZip(sc.nextInt());
-					System.out.println("Enter PhoneNumber");
-					list.get(0).setPhoneNumber(sc.nextInt());
-					System.out.println("Enter Email");
-					list.get(0).setEmail(sc.next());
+	
+	System.out.println("Enter First Name of Details to be Edited: ");
 
-					System.out.println(list.get(0));
-					return "Edited";
-				}else{
-					return "Name Not Available in List";
-				}
+	name1 = sc.next();
+
+	for(int i=0; i<list.size(); i++) {
+	
+	if (name1.equals(list.get(i).getFirstName())) {					
+	
+	System.out.println("Enter FirstName");
+
+	list.get(i).setFirstName(sc.next());
+			
+	System.out.println("Enter LastName");
+
+	list.get(i).setLastName(sc.next());
+		
+	System.out.println("Enter Area");
+			
+	list.get(i).setArea(sc.next());
+	
+	System.out.println("Enter CityName");
+	
+	list.get(i).setCity(sc.next());
+	
+	System.out.println("Enter StateName");
+	
+	list.get(i).setState(sc.next());
+	
+	System.out.println("Enter ZipCode");
+	
+	list.get(i).setZip(sc.nextInt());
+	
+
+	System.out.println("Enter PhoneNumber");
+	
+	list.get(i).setPhoneNumber(sc.nextInt());
+	
+	System.out.println("Enter Email");
+	
+	list.get(i).setEmail(sc.next());
+
+	System.out.println(list.get(i));
+
+	return "Edited";
+
 	}
+}	
+	
+	return "Name Not Available in List";
+	
+}
 
 	public static String deleteDetails() {
-		String name1;
-		System.out.print("Enter FirstName");
-		name1 =sc.next();
+	
+	String name1;
+	
+	System.out.print("Enter FirstName");
+	
+	name1 =sc.next();
 
-		if (name1.equals(list.get(0).getFirstName())) {
-			list.remove(0);
-         return "Deleted";
-		}else{
-			return "Name Not Available in List";
-   	}
+	for(int i=0; i<list.size(); i++) {
+	if (name1.equals(list.get(0).getFirstName())) {
+
+		list.remove(0);
+
+	return Delete;
 	}
+
+}
+	return "Name not available in list" ;
+}
+
 
 
 
@@ -198,7 +241,7 @@ class ContactDetails{
 
 		addDetails();
 
-		System.out.print("Do you want to Edit That Contact ? (y/n)");
+		System.out.print("Do you want to edit contact ? (y/n)");
 
 		check=sc.next();
 
@@ -213,12 +256,18 @@ class ContactDetails{
 
 		}
 
-	 	System.out.print("Do you want to Delete That Contact ? (y/n)");
+	 	System.out.print("Do you want to Delete  contact ? (y/n)");
+		
 		check=sc.next();
+		
 		if (check.equals("y") || check.equals("Y")) {
+		
 		System.out.println(deleteDetails());
+		
 		}else{
+		
 		System.out.println("Done");
+		
 		}
 			
 		for(int i=0; i<list.size(); i++)
